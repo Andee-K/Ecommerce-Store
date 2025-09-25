@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ecommerce Store
 
-## Getting Started
+This project is an e-commerce store built with Next.js, TypeScript, and Zustand for state management. It uses Stripe for handling payments.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+*   **Next.js:** A React framework for building web applications.
+*   **TypeScript:** A superset of JavaScript that adds static typing.
+*   **Zustand:** A minimalist state management library.
+*   **Stripe:** A payment processing platform.
+*   **Tailwind CSS:** An utility-first CSS framework.
+
+## Features
+
+*   **Product Listing:** Displays a list of products with images, names, descriptions, and prices.
+*   **Product Details:** Shows detailed information about a specific product.
+*   **Shopping Cart:** Allows users to add, remove, and manage items in their cart.
+*   **Checkout:** Integrates with Stripe to process payments.
+*   **State Management:** Uses Zustand to manage the cart state across the application.
+*   **Search:** Allows users to search for products by name or description.
+*   **Carousel:** Displays featured products in a carousel on the homepage.
+*   **Responsive Design:** The application is designed to be responsive and work on different screen sizes.
+
+## Setup Instructions
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone <repository_url>
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    cd <project_directory>
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+
+3.  **Set up environment variables:**
+
+    Create a `.env.local` file in the root directory and add the following environment variables:
+
+    ```
+    NEXT_PUBLIC_BASE_URL=<your_base_url>
+    STRIPE_SECRET_KEY=<your_stripe_secret_key>
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=<your_stripe_publishable_key>
+    ```
+
+    Replace the placeholder values with your actual values.
+
+4.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## File Structure
+
+```
+ecommerce-store/
+├── app/
+|   ├── success/
+|   ├── checkout/
+|   ├── products/
+├── components/
+├── store/
+├── lib/
+├── public/
+├── styles/
+├── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+*   `app/`: Contains the main application logic, including pages and routing.
+*   `components/`: Contains reusable React components.
+*   `store/`: Contains Zustand store for state management (`cart-store.ts`).
+*   `lib/`: Contains utility functions, such as the Stripe integration (`stripe.ts`).
+*   `public/`: Contains static assets such as images.
+*   `styles/`: Contains CSS modules and global styles.
+*   `README.md`: This file, providing an overview of the project.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Stripe Integration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project uses Stripe for payment processing. The `stripe.ts` file in the `lib` directory initializes the Stripe client.  The `checkoutAction.ts` file in the `app/checkout` directory handles the checkout process, creates a Stripe checkout session, and redirects the user to the Stripe checkout page.
 
-## Learn More
+## Key Components
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*   **ProductCard:** Displays a product with its image, name, description, and price.
+*   **ProductDetail:** Displays detailed information about a product.
+*   **ProductList:** Lists all products with a search bar.
+*   **Carousel:** Displays featured products in a carousel.
+*   **NavBar:** The navigation bar with links to home, products, and checkout, and displays the cart count.
